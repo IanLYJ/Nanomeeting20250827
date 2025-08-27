@@ -27,6 +27,19 @@ def add_noise(signal_clean, noise_level=0.3):
     signal_noisy = signal_clean + noise
     return signal_noisy
 
+def apply_moving_average(signal_noisy, window_size=21):
+    """
+    Apply moving average filter to smooth the data
+    """
+    # Create a uniform kernel for moving average
+    kernel = np.ones(window_size) / window_size
+    
+    # Apply convolution with 'same' mode to keep original signal length
+    signal_filtered = np.convolve(signal_noisy, kernel, mode='same')
+    
+    return signal_filtered
+
+
 def apply_butterworth_filter(signal_noisy, sampling_rate, cutoff_freq=30, order=4):
     """
     Apply Butterworth low-pass filter to smooth the data
@@ -75,6 +88,7 @@ def main():
     sampling_rate = 1000  # Hz
     noise_level = 0.5
     cutoff_freq = 30  # Hz for Butterworth filter
+    window_size = 21
     
     # Step 1: Generate periodic signal with combination of sine waves
     print("Step 1: Generating periodic signal...")
@@ -86,7 +100,9 @@ def main():
     
     # Step 3: Apply Butterworth filter
     print("Step 3: Applying Butterworth filter...")
-    signal_filtered = apply_butterworth_filter(signal_noisy, sampling_rate, cutoff_freq)
+
+    # signal_filtered = apply_butterworth_filter(signal_noisy, sampling_rate, cutoff_freq)
+    signal_filtered = apply_moving_average(signal_noisy, window_size)
     
     # Step 4: Apply FFT to find main frequencies
     print("Step 4: Applying FFT to find main frequencies...")
