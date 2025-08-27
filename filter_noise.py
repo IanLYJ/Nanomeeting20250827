@@ -10,7 +10,7 @@ def generate_periodic_signal(duration=2.0, sampling_rate=1000):
     t = np.linspace(0, duration, int(sampling_rate * duration), endpoint=False)
     
     # Combine multiple sine waves with different frequencies and amplitudes
-    freq1, freq2, freq3 = 10, 16, 24  # Hz
+    freq1, freq2, freq3 = 2, 4, 8  # Hz
     amp1, amp2, amp3 = 1.0, 0.5, 0.5
     
     signal_clean = (amp1 * np.sin(2 * np.pi * freq1 * t) + 
@@ -67,7 +67,7 @@ def find_main_frequencies(signal_data, sampling_rate, num_peaks=3):
 
 def main():
     # Parameters
-    duration = 2.0  # seconds
+    duration = 4.0  # seconds
     sampling_rate = 1000  # Hz
     noise_level = 0.3
     cutoff_freq = 30  # Hz for Butterworth filter
