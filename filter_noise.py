@@ -10,8 +10,8 @@ def generate_periodic_signal(duration=2.0, sampling_rate=1000):
     t = np.linspace(0, duration, int(sampling_rate * duration), endpoint=False)
     
     # Combine multiple sine waves with different frequencies and amplitudes
-    freq1, freq2, freq3 = 5, 15, 25  # Hz
-    amp1, amp2, amp3 = 1.0, 0.5, 0.3
+    freq1, freq2, freq3 = 10, 16, 24  # Hz
+    amp1, amp2, amp3 = 1.0, 0.5, 0.5
     
     signal_clean = (amp1 * np.sin(2 * np.pi * freq1 * t) + 
                    amp2 * np.sin(2 * np.pi * freq2 * t) + 
@@ -119,7 +119,7 @@ def main():
     # Plot 3: Filtered signal
     ax3.plot(t, signal_filtered, 'g-', linewidth=1, label='Filtered')
     ax3.plot(t, signal_clean, 'b--', alpha=0.6, linewidth=1, label='Original')
-    ax3.set_title('Step 3: Butterworth Filtered Signal')
+    ax3.set_title('Step 3:Filtered Signal')
     ax3.set_xlabel('Time (s)')
     ax3.set_ylabel('Amplitude')
     ax3.legend()
