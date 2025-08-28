@@ -73,8 +73,8 @@ def main():
     # Parameters
     duration = 5.0  # seconds
     sampling_rate = 1000  # Hz
-    noise_level = 0.5
-    cutoff_freq = 30  # Hz for Butterworth filter
+    noise_level = 0.8
+    cutoff_freq = 50  # Hz for Butterworth filter
     
     # Step 1: Generate periodic signal with combination of sine waves
     print("Step 1: Generating periodic signal...")
